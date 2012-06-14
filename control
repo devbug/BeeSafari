@@ -1,0 +1,9 @@
+Package: me.devbug.beeaddon.safari
+Name: BeeSafari
+Depends: kr.iolate.beekeyboard (>= 0.2-3)
+Version: 1.0
+Architecture: iphoneos-arm
+Description: BeeKeyboard addon for MobileSafari
+Maintainer: deVbug <devbug@devbug.me>
+Author: deVbug <devbug@devbug.me>
+Section: Addons (BeeKeyboard)
