@@ -199,6 +199,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Navigation</string>
 		</dict>
 		<dict>
 			<key>defaults</key>
@@ -293,6 +295,84 @@
 			<string>Escape</string>
 			<key>label</key>
 			<string>Escape</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Actions</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.3.5</string>
+			<key>key</key>
+			<string>ShowBookmarks</string>
+			<key>label</key>
+			<string>Show bookmarks</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.1.7</string>
+			<key>key</key>
+			<string>AddBookmark</string>
+			<key>label</key>
+			<string>Add bookmark</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.5.7</string>
+			<key>key</key>
+			<string>AddToReadingList</string>
+			<key>label</key>
+			<string>Add to Reading List</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.5.11</string>
+			<key>key</key>
+			<string>AddToHomescreen</string>
+			<key>label</key>
+			<string>Add to Home Screen</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.5.23</string>
+			<key>key</key>
+			<string>Twitter</string>
+			<key>label</key>
+			<string>Twitter</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.1.19</string>
+			<key>key</key>
+			<string>Print</string>
+			<key>label</key>
+			<string>Print</string>
 			<key>cell</key>
 			<string>BInputKeyCell</string>
 		</dict>

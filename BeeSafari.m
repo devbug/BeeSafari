@@ -7,10 +7,13 @@
 #import "forSafari/header.h"
 
 
-#define DRAG_VALUE		70
-#define DRAG_DELAY		0.1f
+#define DRAG_VALUE		120
+#define DRAG_DELAY		0.2f
 
-BOOL isArrowKeyDown = NO;
+BOOL isLeftArrowKeyDown = NO;
+BOOL isRightArrowKeyDown = NO;
+BOOL isUpArrowKeyDown = NO;
+BOOL isDownArrowKeyDown = NO;
 
 
 // http://api.iolate.kr/beekeyboard/info/
@@ -30,10 +33,10 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 	if (keyDown) {
 		if ([event isEqualToString:@"LeftScroll"]) {
 			// scroll
-			if (isArrowKeyDown == NO) {
-				isArrowKeyDown = YES;
+			if (isLeftArrowKeyDown == NO) {
+				isLeftArrowKeyDown = YES;
 				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-					while (isArrowKeyDown) {
+					while (isLeftArrowKeyDown) {
 						if (!goLeftBydeVbugForSafari(DRAG_VALUE)) break;
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
@@ -42,10 +45,10 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			}
 		} else if ([event isEqualToString:@"RightScroll"]) {
 			// scroll
-			if (isArrowKeyDown == NO) {
-				isArrowKeyDown = YES;
+			if (isRightArrowKeyDown == NO) {
+				isRightArrowKeyDown = YES;
 				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-					while (isArrowKeyDown) {
+					while (isRightArrowKeyDown) {
 						if (!goRightBydeVbugForSafari(DRAG_VALUE)) break;
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
@@ -54,10 +57,10 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			}
 		} else if ([event isEqualToString:@"DownScroll"]) {
 			// scroll
-			if (isArrowKeyDown == NO) {
-				isArrowKeyDown = YES;
+			if (isDownArrowKeyDown == NO) {
+				isDownArrowKeyDown = YES;
 				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-					while (isArrowKeyDown) {
+					while (isDownArrowKeyDown) {
 						if (!goDownBydeVbugForSafari(DRAG_VALUE)) break;
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
@@ -66,10 +69,10 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			}
 		} else if ([event isEqualToString:@"UpScroll"]) {
 			// scroll
-			if (isArrowKeyDown == NO) {
-				isArrowKeyDown = YES;
+			if (isUpArrowKeyDown == NO) {
+				isUpArrowKeyDown = YES;
 				dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-					while (isArrowKeyDown) {
+					while (isUpArrowKeyDown) {
 						if (!goUpBydeVbugForSafari(DRAG_VALUE)) break;
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
@@ -78,7 +81,7 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			}
 		}
 		
-		if (isArrowKeyDown) isArrowKeyDown = NO;
+		isLeftArrowKeyDown = isRightArrowKeyDown = isDownArrowKeyDown = isUpArrowKeyDown = NO;
 		
 		if ([event isEqualToString:@"PrevTab"]) {
 			// prev tab
@@ -92,22 +95,26 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		
 		if ([event isEqualToString:@"GoToBottom"]) {
 			// go to bottom
-			goBottomBydeVbugForSafari();
-			return 1;
+			if (goBottomBydeVbugForSafari())
+				return 1;
+			return 0;
 		} else if ([event isEqualToString:@"GoToTop"]) {
 			// go to top
-			goTopBydeVbugForSafari();
-			return 1;
+			if (goTopBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"GoBack"] || [event isEqualToString:@"GoBack2"]) {
 			// go back
-			goBackBydeVbugForSafari();
-			return 1;
+			if (goBackBydeVbugForSafari())
+				return 1;
+			return 0;
 		} else if ([event isEqualToString:@"GoForward"]) {
 			// go forward
-			goForwardBydeVbugForSafari();
-			return 1;
+			if (goForwardBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"NewTab"] || [event isEqualToString:@"NewTab2"]) {
@@ -118,8 +125,9 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		
 		if ([event isEqualToString:@"Reload"] || [event isEqualToString:@"Reload2"]) {
 			// reload
-			reloadBydeVbugForSafari();
-			return 1;
+			if (reloadBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"FocusAddressView"] || [event isEqualToString:@"FocusAddressView2"]) {
@@ -163,19 +171,50 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			prevSearchOnPageBydeVbugForSafari();
 			return 1;
 		}
+		
+		if ([event isEqualToString:@"Twitter"]) {
+			if (showTweetControllerBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"Print"]) {
+			if (showPrintPanelBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"AddBookmark"]) {
+			if (showAddBookmarkBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"AddToHomescreen"]) {
+			if (showAddToHomeBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"AddToReadingList"]) {
+			if (addToReadingListBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"ShowBookmarks"]) {
+			if (showBookmarksBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
 	} else {
 		if ([event isEqualToString:@"LeftScroll"]) {
 			// scroll
-			isArrowKeyDown = NO;
+			isLeftArrowKeyDown = NO;
 		} else if ([event isEqualToString:@"RightScroll"]) {
 			// scroll
-			isArrowKeyDown = NO;
+			isRightArrowKeyDown = NO;
 		} else if ([event isEqualToString:@"DownScroll"]) {
 			// scroll
-			isArrowKeyDown = NO;
+			isDownArrowKeyDown = NO;
 		} else if ([event isEqualToString:@"UpScroll"]) {
 			// scroll
-			isArrowKeyDown = NO;
+			isUpArrowKeyDown = NO;
 		}
 	}
 	
