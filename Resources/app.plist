@@ -68,7 +68,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.82</string>
+			<string>7.1.82</string>
 			<key>key</key>
 			<string>GoToTop</string>
 			<key>label</key>
@@ -80,7 +80,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.81</string>
+			<string>7.1.81</string>
 			<key>key</key>
 			<string>GoToBottom</string>
 			<key>label</key>
@@ -98,7 +98,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.10.80</string>
+			<string>7.5.80</string>
 			<key>key</key>
 			<string>PrevTab</string>
 			<key>label</key>
@@ -110,7 +110,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.10.79</string>
+			<string>7.5.79</string>
 			<key>key</key>
 			<string>NextTab</string>
 			<key>label</key>
@@ -122,7 +122,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.17</string>
+			<string>7.1.17</string>
 			<key>key</key>
 			<string>NewTab</string>
 			<key>label</key>
@@ -134,7 +134,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.23</string>
+			<string>7.1.23</string>
 			<key>key</key>
 			<string>NewTab2</string>
 			<key>label</key>
@@ -146,7 +146,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.26</string>
+			<string>7.1.26</string>
 			<key>key</key>
 			<string>CloseTab</string>
 			<key>label</key>
@@ -164,7 +164,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.9</string>
+			<string>7.1.9</string>
 			<key>key</key>
 			<string>Search</string>
 			<key>label</key>
@@ -176,7 +176,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.10</string>
+			<string>7.1.10</string>
 			<key>key</key>
 			<string>NextSearch</string>
 			<key>label</key>
@@ -188,7 +188,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.12.10</string>
+			<string>7.5.10</string>
 			<key>key</key>
 			<string>PrevSearch</string>
 			<key>label</key>
@@ -218,7 +218,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.80</string>
+			<string>7.1.80</string>
 			<key>key</key>
 			<string>GoBack2</string>
 			<key>label</key>
@@ -230,7 +230,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.79</string>
+			<string>7.1.79</string>
 			<key>key</key>
 			<string>GoForward</string>
 			<key>label</key>
@@ -242,7 +242,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.21</string>
+			<string>7.1.21</string>
 			<key>key</key>
 			<string>Reload</string>
 			<key>label</key>
@@ -266,7 +266,7 @@
 			<key>defaults</key>
 			<string>BeeKeyboard/beesafari</string>
 			<key>default</key>
-			<string>7.8.15</string>
+			<string>7.1.15</string>
 			<key>key</key>
 			<string>FocusAddressView</string>
 			<key>label</key>
@@ -373,6 +373,30 @@
 			<string>Print</string>
 			<key>label</key>
 			<string>Print</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.1.46</string>
+			<key>key</key>
+			<string>ZoomIn</string>
+			<key>label</key>
+			<string>Zoom in</string>
+			<key>cell</key>
+			<string>BInputKeyCell</string>
+		</dict>
+		<dict>
+			<key>defaults</key>
+			<string>BeeKeyboard/beesafari</string>
+			<key>default</key>
+			<string>7.1.45</string>
+			<key>key</key>
+			<string>ZoomOut</string>
+			<key>label</key>
+			<string>Zoom out</string>
 			<key>cell</key>
 			<string>BInputKeyCell</string>
 		</dict>

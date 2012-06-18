@@ -41,7 +41,7 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 1;
+				return 0;
 			}
 		} else if ([event isEqualToString:@"RightScroll"]) {
 			// scroll
@@ -53,7 +53,7 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 1;
+				return 0;
 			}
 		} else if ([event isEqualToString:@"DownScroll"]) {
 			// scroll
@@ -65,7 +65,7 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 1;
+				return 0;
 			}
 		} else if ([event isEqualToString:@"UpScroll"]) {
 			// scroll
@@ -77,7 +77,7 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 1;
+				return 0;
 			}
 		}
 		
@@ -199,6 +199,17 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		}
 		if ([event isEqualToString:@"ShowBookmarks"]) {
 			if (showBookmarksBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		
+		if ([event isEqualToString:@"ZoomIn"]) {
+			if (zoomInBydeVbugForSafari())
+				return 1;
+			return 0;
+		}
+		if ([event isEqualToString:@"ZoomOut"]) {
+			if (zoomOutBydeVbugForSafari())
 				return 1;
 			return 0;
 		}

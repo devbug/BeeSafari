@@ -24,3 +24,5 @@ extern BOOL showAddBookmarkBydeVbugForSafari();
 extern BOOL showBookmarksBydeVbugForSafari();
 extern BOOL showActionsBydeVbugForSafari();
 extern BOOL addToReadingListBydeVbugForSafari();
+extern BOOL zoomInBydeVbugForSafari();
+extern BOOL zoomOutBydeVbugForSafari();
