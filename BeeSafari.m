@@ -9,6 +9,8 @@
 
 #define DRAG_VALUE		120
 #define DRAG_DELAY		0.2f
+#define ZOOMIN_SCALE	1.3
+#define ZOOMOUT_SCALE	0.7
 
 BOOL isLeftArrowKeyDown = NO;
 BOOL isRightArrowKeyDown = NO;
@@ -41,8 +43,8 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 0;
 			}
+			return 0;
 		} else if ([event isEqualToString:@"RightScroll"]) {
 			// scroll
 			if (isRightArrowKeyDown == NO) {
@@ -53,8 +55,8 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 0;
 			}
+			return 0;
 		} else if ([event isEqualToString:@"DownScroll"]) {
 			// scroll
 			if (isDownArrowKeyDown == NO) {
@@ -65,8 +67,8 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 0;
 			}
+			return 0;
 		} else if ([event isEqualToString:@"UpScroll"]) {
 			// scroll
 			if (isUpArrowKeyDown == NO) {
@@ -77,20 +79,22 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 						[NSThread sleepForTimeInterval:DRAG_DELAY];
 					}
 				});
-				return 0;
 			}
+			return 0;
 		}
 		
 		isLeftArrowKeyDown = isRightArrowKeyDown = isDownArrowKeyDown = isUpArrowKeyDown = NO;
 		
 		if ([event isEqualToString:@"PrevTab"]) {
 			// prev tab
-			prevTabBydeVbugForSafari();
-			return 1;
+			if (prevTabBydeVbugForSafari())
+				return 1;
+			return 0;
 		} else if ([event isEqualToString:@"NextTab"]) {
 			// next tab
-			nextTabBydeVbugForSafari();
-			return 1;
+			if (nextTabBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"GoToBottom"]) {
@@ -119,8 +123,9 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		
 		if ([event isEqualToString:@"NewTab"] || [event isEqualToString:@"NewTab2"]) {
 			// open new tab
-			openNewTabBydeVbugForSafari();
-			return 1;
+			if (openNewTabBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"Reload"] || [event isEqualToString:@"Reload2"]) {
@@ -132,14 +137,16 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		
 		if ([event isEqualToString:@"FocusAddressView"] || [event isEqualToString:@"FocusAddressView2"]) {
 			// focus to addressview
-			focusAddressViewBydeVbugForSafari();
-			return 1;
+			if (focusAddressViewBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"CloseTab"]) {
 			// close current tab
-			closeTabBydeVbugForSafari();
-			return 1;
+			if (closeTabBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"Escape"]) {
@@ -157,19 +164,22 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		
 		if ([event isEqualToString:@"Search"]) {
 			// find
-			showSearchOnThisPageBydeVbugForSafari();
-			return 1;
+			if (showSearchOnThisPageBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"NextSearch"]) {
 			// next find
-			nextSearchOnPageBydeVbugForSafari();
-			return 1;
+			if (nextSearchOnPageBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		if ([event isEqualToString:@"PrevSearch"]) {
 			// prev find
-			prevSearchOnPageBydeVbugForSafari();
-			return 1;
+			if (prevSearchOnPageBydeVbugForSafari())
+				return 1;
+			return 0;
 		}
 		
 		if ([event isEqualToString:@"Twitter"]) {
@@ -204,12 +214,12 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 		}
 		
 		if ([event isEqualToString:@"ZoomIn"]) {
-			if (zoomInBydeVbugForSafari())
+			if (zoomInBydeVbugForSafari(ZOOMIN_SCALE))
 				return 1;
 			return 0;
 		}
 		if ([event isEqualToString:@"ZoomOut"]) {
-			if (zoomOutBydeVbugForSafari())
+			if (zoomOutBydeVbugForSafari(ZOOMOUT_SCALE))
 				return 1;
 			return 0;
 		}
