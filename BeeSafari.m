@@ -6,6 +6,8 @@
 
 #import "forSafari/header.h"
 
+#import <objc/runtime.h>
+
 
 #define DRAG_VALUE		120
 #define DRAG_DELAY		0.2f

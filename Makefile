@@ -1,4 +1,7 @@
-export FW_DEVICE_IP=192.168.1.7
+ARCHS = armv7
+TARGET = iphone:clang:5.0:5.0
+
+FW_DEVICE_IP=192.168.1.7
 
 include theos/makefiles/common.mk
 
