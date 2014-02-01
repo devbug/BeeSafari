@@ -20,21 +20,8 @@ BOOL isUpArrowKeyDown = NO;
 BOOL isDownArrowKeyDown = NO;
 
 
-// http://api.iolate.kr/beekeyboard/info/
-// return
-//	0 : send event to next responder
-//	1 : not send to any responder
-//	2 : send to system only
-int keyEvent(int keyCode, int modStat, BOOL keyDown)
-{
-	NSString *event = [objc_getClass("BeeKeyboard") eventFromKeyCode:keyCode 
-																 Mod:modStat 
-														   UsagePage:7 
-														   AddonName:@ADDON_NAME 
-															   Table:[@ADDON_NAME lowercaseString] 
-															  Global:NO];
-	
-	if (keyDown) {
+int processKeyEvent(NSString* event, BOOL keyDown) {
+    if (keyDown) {
 		if ([event isEqualToString:@"LeftScroll"]) {
 			// scroll
 			if (isLeftArrowKeyDown == NO) {
@@ -158,11 +145,11 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 			return 0;
 		}
 		
-		/*if (keyCode == KEY_Z && 
-				(modStat == MOD_CONTROL || modStat == (MOD_CONTROL | MOD_SHIFT))) {
-			// reopen recently closed tab
-			return 1;
-		}*/
+		/*if (keyCode == KEY_Z &&
+         (modStat == MOD_CONTROL || modStat == (MOD_CONTROL | MOD_SHIFT))) {
+         // reopen recently closed tab
+         return 1;
+         }*/
 		
 		if ([event isEqualToString:@"Search"]) {
 			// find
@@ -242,4 +229,34 @@ int keyEvent(int keyCode, int modStat, BOOL keyDown)
 	}
 	
 	return 0;
+}
+
+
+// http://api.iolate.kr/beekeyboard/info/
+// return
+//	0 : send event to next responder
+//	1 : not send to any responder
+//	2 : send to system only
+int keyEvent(int keyCode, int modStat, BOOL keyDown)
+{
+	NSString *event = [objc_getClass("BeeKeyboard") eventFromKeyCode:keyCode 
+																 Mod:modStat 
+														   UsagePage:7 
+														   AddonName:@ADDON_NAME 
+															   Table:[@ADDON_NAME lowercaseString] 
+															  Global:NO];
+	
+	return processKeyEvent(event, keyDown);
+}
+
+
+//BeeKeyboard >= 1.7
+int beeKeyEvent(BKKeyEvent* event) {
+    if (event->global == NO) {
+        NSString* eventName = [BK eventNameFromKeyEvent:event withAddonName:@ADDON_NAME andTable:[@ADDON_NAME lowercaseString]];
+        
+        return processKeyEvent(eventName, event->isPress);
+    }else{
+        return 0;
+    }
 }

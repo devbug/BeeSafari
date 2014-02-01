@@ -1,5 +1,9 @@
 {
-		Filter = (
-				"com.apple.mobilesafari",
-		);
+	Filter = (
+		"com.apple.mobilesafari",
+	);
+	Local = YES;
+	Whitelist = (
+		"com.apple.mobilesafari",
+	);
 }

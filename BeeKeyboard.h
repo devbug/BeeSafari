@@ -1,5 +1,21 @@
 #import "BeeKeycode.h"
 
+//##### BeeKeyboard >= 1.7 #####
+//http://api.iolate.kr/beekeyboard/headers/BeeKeyboard.h
+
+typedef struct {
+    int usagePage;
+    int modifier;
+    int keyCode;
+    BOOL isPress;
+    BOOL global;
+    BOOL onEditMode;
+} BKKeyEvent;
+
+#define BK NSClassFromString(@"BeeKeyboard")
+//##############################
+
+
 @interface BeeKeyboard
 //addonName: your addon name. if your bundle name is Basic.bundle, "Basic" is your addon name.
 //Table: defaults entry in Setting info file without "BeeKeyboard/".
@@ -16,4 +32,8 @@
 //keyString: [NSString stringWithFormat:@"7.%d.%d", modStat, keyCode]
 +(NSString *)eventFromKey:(NSString *)keyString AddonName:(NSString *)addonName Table:(NSString *)table Global:(BOOL)global;
 
+//##### BeeKeyboard >= 1.7 #####
++(NSString *)eventNameFromKeyEvent:(BKKeyEvent *)event withAddonName:(NSString *)addonName andTable:(NSString *)table;
+
+//##############################
 @end
