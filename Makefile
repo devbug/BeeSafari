@@ -1,5 +1,6 @@
+#No need for arm64
 ARCHS = armv7
-TARGET = iphone:clang:5.0:5.0
+TARGET = iphone:clang:latest:5.0
 
 FW_DEVICE_IP=192.168.1.7
 
@@ -18,6 +19,9 @@ ADDITIONAL_CFLAGS = -std=c99
 include $(THEOS_MAKE_PATH)/library.mk
 
 after-stage::
+	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/DEBIAN$(ECHO_END)
+	$(ECHO_NOTHING)cp preinst $(THEOS_STAGING_DIR)/DEBIAN/$(ECHO_END)
+	$(ECHO_NOTHING)cp prerm $(THEOS_STAGING_DIR)/DEBIAN/$(ECHO_END)
 	$(ECHO_NOTHING)cp -R Resources/* "$(THEOS_STAGING_DIR)$(Addon_INSTALL_PATH)"$(ECHO_END)
 
 ri:: remoteinstall
